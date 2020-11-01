@@ -1,0 +1,22 @@
+{
+  "name": "meliuz-pokemon-api",
+  "version": "1.0.0",
+  "description": "An amazing pokemon api developed as a Meliuz's technical test.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pokemon-api"
+  ],
+  "author": "lets00",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^7.12.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

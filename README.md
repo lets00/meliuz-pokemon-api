@@ -6,7 +6,27 @@ Construir a API para uma pequena interface que possibilitará que usuários visu
 
 ## Usando containers docker
 
+Primeiramente, certifique-se que você possui o **docker** e o **docker-compose** instalados na máquina. Você pode consultar a [documentação oficial](https://docs.docker.com/get-docker/) para instalá-lo em sua máquina, dependendo do sistema operacional e distribuição utilizada.
+
+Após isso, precisamos criar os arquivos de configuração do ambiente. O container do BD pode ser configurado criando um arquivo `database.env` e definindo as seguintes informações:
+
+```sh
+MONGO_INITDB_ROOT_USERNAME=root
+MONGO_INITDB_ROOT_PASSWORD=example
+```
+
+O container do node pode ser configurado criando um arquivo `app.env` e definindo as seguintes informações:
+```
 TO DO
+```
+
+Com todos os arquivos criados, podemos iniciar os containers através do comando
+
+```sh
+$ docker-compose up -d
+```
+
+O comando acima irá baixar as imagens dos container, criar o volume utiliza-do pelo BD e os containers.
 
 ## Máquina Local
  TO DO
@@ -14,7 +34,6 @@ TO DO
 # Rotas
 ## /pokemons
 ## /team
-
 
 # Ferramentas utilizadas
  

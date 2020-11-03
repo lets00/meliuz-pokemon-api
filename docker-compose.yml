@@ -4,6 +4,8 @@ services:
     image: mongo:4-bionic
     env_file:
       - database.env
+    ports:
+      - "27017:27017"
     volumes:
       - mongo-db:/data/db
   app:

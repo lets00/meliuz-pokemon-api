@@ -10,7 +10,6 @@ describe('Pokemon get tests', () => {
     const file = await readFilePromise('./tests/pokemon.json');
     const fileJson = await JSON.parse(file);
     const result = await request(app).get('/pokemon');
-    console.log(result.body);
     expect(result.body).toMatchObject(fileJson);
   });
-})
+});

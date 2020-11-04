@@ -11,6 +11,6 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    noConsole: false,
+    'no-console': 'off',
   },
 };

@@ -70,7 +70,7 @@ Body:
  
 ## NodeJS
 
-TO DO
+Optei por utilizar o NodeJS principalmente pela experiência que possuo com Javascript no Backend.
 
 ## Banco de Dados NoSQL MongoDB 
  
@@ -83,3 +83,19 @@ Optei por um banco NoSQL nesse cenário baseado em três principais fatores:
 1- O arquivo não está estruturado (existem campos com 0 ou mais valores). Caso utilizasse um banco SQL seria necessário criar diversas tabelas para representar cada relação de 0 para muitos, além de normalizar dos dados para no mínimo 3FN (Terceira Forma Normal) evitando dados repeditos em diversas tabelas diferentes, aumentando o número de Joins entre tabelas para recuperar a mesma informação que uma única consulta no NoSQL para esse cenário.
 
 O principal motivo para escolher o MongoDB e não outros bancos NoSQL (CouchDB, Cassandra, etc) foi sua fácil integração com o NodeJS, principalmente pela linguagem utilizada para manipulação do banco ser muito semelhante com o Javascript, reduzindo o tempo de uma modelagem MVP.
+
+## Express
+
+Um dos principais frameworks web para desenvolvimento de APIs no NodeJS. Optei pelo express principalmente por ser minimalista e flexível, premitindo modelar uma API rapidamente e integra-la com diversos módulos pré-existentes sem a necessidade de criar tudo do zero.
+
+## Validação de dados através do Joi
+
+Inicialmente, escolhi trabalhar com o **express-validator** (uma das principais bibliotecas quando trabalhamos com o Express). Entretanto a integração dela com o jest mostrou-se desafiador a princípio, o que não permitia de maneira simples testar se as validações dos campos estavam sendo realizadas corretamente quando um teste precisava acessar uma rota que estava sendo validada pelo express-validator.
+
+O Joi é uma biblioteca bastante utilizada para validação de dados. Antigamente ela era bastante integrada com a biblioteca HapiJS(uma biblioteca para criação de APIs) mas atualmente pode-se utilizá-la em qualquer biblioteca ou cenário, não limitando-se apenas ao backend.
+
+## Testes automatizados usando Jest
+
+Optei por utilizar tetes automáticos seguindo a técnica de TDD para facilitar e garantir qualidade as integrações de novas funcionalidades, garantindo assim que o comportamento esperado não seja modificado pela adição ou mutação de código no projeto. O código de teste é escrito inicialmente falhando, e o código básico refatorado é escrito logo em seguida. Esse processo se repete de maneira cíclica conforme necessidade de garantia de certo nível de qualidade.
+
+O Jest é um framework de teste javascript completo que permite a construção de suítes de testes, mock de objetos e funções e cobertura de código. Optei pela escolha do Jest principalmente pela facilidade de integração com o NodeJS, oferecendo pouca configuração e o resultado esperado (construção de suítes de testes automatizados).

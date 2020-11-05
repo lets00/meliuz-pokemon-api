@@ -32,8 +32,39 @@ O comando acima irá baixar as imagens dos container, criar o volume utiliza-do 
  TO DO
 
 # Rotas
-## /pokemons
-## /team
+## GET /pokemons
+Obtém todos os pokemons existentes. É possível filtar por pokemons que possua uma string ou pelo seu tipo através de *query parameters*
+
+**Query parameters:**
+* name: Nome do pokemon
+* type: Tipo do pokemon. Pode-se passar mais de um tipo, separando-os por vírgula.
+
+Status code:
+* 200
+
+Ex:
+[http:/localhost:3000/pokemons?name=saur&type=grass,fire](http:/localhost:3000/pokemons?name=saur&type=grass,fire)
+
+## POST /team
+**Body:**
+* name: Nome do time (obrigatório). Deve ter pelo menos 5 caracteres
+* pokemons: Array com o Id de cada pokemon(obrigatório). Os Ids devem ser números. Deve ter no máximo 6 pokemons por time.
+
+Status code:
+* 201: criado
+* 422: entrada inválida (não processada)
+
+Ex:
+[http:/localhost:3000/post](http:/localhost:3000/post)
+
+Body:
+
+```js
+{
+  name: "lets00",
+  pokemons: [1,2,3,4,5]
+}
+```
 
 # Ferramentas utilizadas
  

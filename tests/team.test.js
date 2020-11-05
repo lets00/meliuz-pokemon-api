@@ -74,4 +74,13 @@ describe('Team create tests', () => {
     const response2 = await request(app).post('/team').send(postBody);
     expect(response2.status).toBe(422);
   });
+
+  it('Should not create if exist pokemon id repetead', async () => {
+    const postBody = {
+      name: 'lets00',
+      pokemons: [1, 2, 3, 3],
+    };
+    const response = await request(app).post('/team').send(postBody);
+    expect(response.status).toBe(422);
+  });
 });

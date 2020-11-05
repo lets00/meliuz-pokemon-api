@@ -4,7 +4,7 @@
   "description": "An amazing pokemon api developed as a Meliuz's technical test.",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --forceExit --runInBand",
     "start": "node --experimental-modules index.js"
   },
   "type": "module",
@@ -34,6 +34,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "joi": "^17.3.0",
     "mongoose": "^5.10.11"
   }
 }

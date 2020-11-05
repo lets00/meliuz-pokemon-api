@@ -1,6 +1,8 @@
 # Meliuz pokemon api
 
-Construir a API para uma pequena interface que possibilitará que usuários visualizem uma lista com todos os Pokémon existentes, faça filtros por nome e tipo.
+Essa API foi construída como parte do desafio técnico proposto pela Meliuz para o cargo de Pessoa Desenvolvedora Back-end.
+
+O desafio consiste em construir uma API para uma pequena interface que possibilitará que usuários visualizem uma lista com todos os Pokémon existentes e faça filtros por nome e tipo. Além de permitir a criação e gravação de um time montado pelo usuário. Para mais informações sobre o desafio, entre em contato direto com o time da Meliuz.
 
 # Instalação
 
@@ -8,32 +10,64 @@ Construir a API para uma pequena interface que possibilitará que usuários visu
 
 Primeiramente, certifique-se que você possui o **docker** e o **docker-compose** instalados na máquina. Você pode consultar a [documentação oficial](https://docs.docker.com/get-docker/) para instalá-lo em sua máquina, dependendo do sistema operacional e distribuição utilizada.
 
-Após isso, precisamos criar os arquivos de configuração do ambiente. O container do BD pode ser configurado criando um arquivo `database.env` e definindo as seguintes informações:
+Após isso, precisamos criar os arquivos de configuração do ambiente. O container do Banco de Dados(BD) pode ser configurado criando um arquivo `database.env` e definindo as seguintes informações:
 
 ```sh
 MONGO_INITDB_ROOT_USERNAME=root
 MONGO_INITDB_ROOT_PASSWORD=example
 ```
+PS: não esqueça de definir as credenciais fortes.
 
 O container do node pode ser configurado criando um arquivo `app.env` e definindo as seguintes informações:
 ```
-TO DO
+DB_URL=mongodb://root:example@db:27017/meliuz?authSource=admin
 ```
+PS: substituir root e example pelo seu usuário e senha, respectivamente.
 
-Com todos os arquivos criados, podemos iniciar os containers através do comando
+Com todos os arquivos criados, podemos iniciar os containers através do comando:
 
 ```sh
 $ docker-compose up -d
 ```
 
-O comando acima irá baixar as imagens dos container, criar o volume utiliza-do pelo BD e os containers.
+O comando acima irá baixar as imagens dos container, criar o volume utiliza-do pelo BD e os containers. O servidor poderá ser acessado através do endereço [https://localhost:3000/](https://localhost:3000/).
 
 ## Máquina Local
- TO DO
+
+Para executar localmente, primeiramente, certifique-se que você possui instalado o **nodejs** (v12.16.3 ou superior), **npm** (6.14.8 ou superior) e o **mongodb** (4.4.1 Community) instalado e configurado.
+
+Após isso, clone o projeto, acesse a pasta raiz e instale as dependências necessárias:
+```sh
+$ git clone https://github.com/lets00/meliuz-pokemon-api/
+$ cd meliuz-pokemon-api/
+$ npm i
+```
+
+Após isso, é necessário configurar uma váriável de ambiente com a URI de acesso ao banco de dados:
+```sh
+$ export DB_URL=mongodb://root:example@localhost:27017/meliuz?authSource=admin
+```
+Para executar o servidor, execute o comando:
+```sh
+$ npm start
+```
+O servidor poderá ser acessado através do endereço [https://localhost:3000/](https://localhost:3000/).
+
+## Executando testes
+
+Inicialmente, é necessário ter instalado o **jest** no seu ambiente. Para instalá-lo, execute: 
+```sh
+$ npm i jest
+```
+
+Para executar **todas** as suítes de testes, execute o seguinte comando:
+```sh
+$ npm run test
+```
 
 # Rotas
 ## GET /pokemons
-Obtém todos os pokemons existentes. É possível filtar por pokemons que possua uma string ou pelo seu tipo através de *query parameters*
+Obtém todos os pokemons existentes. É possível filtar por parte do nome de um pokemon ou pelo seu tipo através de *query parameters*
 
 **Query parameters:**
 * name: Nome do pokemon

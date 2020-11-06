@@ -5,11 +5,11 @@ import app from '../app';
 
 describe('Team create tests', () => {
   beforeEach(async () => {
-    await team.remove({});
+    await team.deleteMany({});
   });
 
   afterAll(async () => {
-    await team.remove({});
+    await team.deleteMany({});
   });
 
   it('Should create a valid team', async () => {

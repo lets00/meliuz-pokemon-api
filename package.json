@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --forceExit --runInBand",
+    "test:coverage": "jest --forceExit --runInBand --coverage",
     "start": "node --experimental-modules index.js"
   },
   "type": "module",

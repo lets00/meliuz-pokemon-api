@@ -106,7 +106,7 @@ $ npm run test
 ```
 
 # Rotas
-## GET /pokemons
+## GET /pokemon
 Obtém todos os pokemons existentes. É possível filtar por parte do nome de um pokemon ou pelo seu tipo através de *query parameters*
 
 **Query parameters:**
@@ -117,26 +117,26 @@ Status code:
 * 200
 
 Ex:
-[http:/localhost:3000/pokemons?name=saur&type=grass,fire](http:/localhost:3000/pokemons?name=saur&type=grass,fire)
+[http://localhost:3000/pokemon?name=saur&type=grass,fire](http://localhost:3000/pokemon?name=saur&type=grass,fire)
 
 ## POST /team
 **Body:**
 * name: Nome do time (obrigatório). Deve ter pelo menos 5 caracteres
-* pokemons: Array com o Id de cada pokemon(obrigatório). Os Ids devem ser números. Deve ter no máximo 6 pokemons por time.
+* pokemons: Array com o Id de cada pokemon(obrigatório). Os Ids devem ser números não repetidos. Deve possuir no máximo 6 pokemons por time.
 
 Status code:
 * 201: criado
 * 422: entrada inválida (não processada)
 
 Ex:
-[http:/localhost:3000/post](http:/localhost:3000/post)
+[http://localhost:3000/team](http://localhost:3000/team)
 
 Body:
 
 ```js
 {
-  name: "lets00",
-  pokemons: [1,2,3,4,5]
+  "name": "lets00",
+  "pokemons": [1,2,3,4,5]
 }
 ```
 

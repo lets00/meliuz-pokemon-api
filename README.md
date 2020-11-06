@@ -19,7 +19,7 @@ MONGO_INITDB_ROOT_PASSWORD=example
 PS: não esqueça de definir as credenciais fortes.
 
 O container do node pode ser configurado criando um arquivo `app.env` e definindo as seguintes informações:
-```
+```sh
 DB_URL=mongodb://root:example@db:27017/meliuz?authSource=admin
 ```
 PS: substituir root e example pelo seu usuário e senha, respectivamente.
@@ -30,7 +30,9 @@ Com todos os arquivos criados, podemos iniciar os containers através do comando
 $ docker-compose up -d
 ```
 
-O comando acima irá baixar as imagens dos container, criar o volume utiliza-do pelo BD e os containers. O servidor poderá ser acessado através do endereço [https://localhost:3000/](https://localhost:3000/).
+O comando acima irá baixar as imagens dos container, criar o volume utiliza-do pelo BD e os containers.
+
+Agora devemos criar o banco de dados e a collection que vamos utilizar no projeto (veja a sessão **Criando o banco de dados** abaixo). 
 
 ## Máquina Local
 
@@ -51,7 +53,45 @@ Para executar o servidor, execute o comando:
 ```sh
 $ npm start
 ```
-O servidor poderá ser acessado através do endereço [https://localhost:3000/](https://localhost:3000/).
+Agora devemos criar o banco de dados e a collection que vamos utilizar no projeto (veja a sessão **Criando o banco de dados** abaixo). 
+
+## Criando o banco de dados
+
+Para iniciar o banco de dados, vamos utilizar o utilitário **mongoimport** para criar o arquivo tests/pokemon.json no BD. Se você está utilizando o passo-a-passo de criação do ambiente com docker, esse utilitário já está presente dentro do container, caso contrário, você deverá instalar e configurar no seu ambiente (geralmente o utilitário já é instalado no ambiente quando você instala e configura o mongodb. Caso não esteja instalado, por favor, verifique a [documentação oficial](https://docs.mongodb.com/database-tools/mongoimport/).)
+
+### Importando o arquivo pokemons.json para o BD no container docker
+
+Primeiramente, precisamos descobrir qual o ID do nosso container do mongodb. Para isso, execute o comando abaixo:
+
+```sh
+$ docker ps
+CONTAINER ID        IMAGE                    COMMAND                  CREATED             STATUS              PORTS                      NAMES
+1ef5964080a2        meliuz-pokemon-api_app   "docker-entrypoint.s…"   29 minutes ago      Up 29 minutes       0.0.0.0:3000->3000/tcp     meliuz-pokemon-api_app_1
+6f4be171c24c        mongo:4-bionic           "docker-entrypoint.s…"   29 minutes ago      Up 29 minutes       0.0.0.0:27017->27017/tcp   meliuz-pokemon-api_db_1
+```
+Podemos observar nesse exemplo que o ID do mongodb é o *6f4be171c24c*.
+
+Após isso, precisamos copiar o arquivo *tests/pokemon.json* para dentro do banco de dados:
+
+```sh
+$ docker cp tests/pokemon.json  6f4be171c24c:/tmp/pokemon.json
+```
+PS: substitua *6f4be171c24c* pelo ID do seu container do mongodb.
+
+Agora, executaremos o **mongoimport** para importar o JSON para o nosso banco, criando o dtabase e a collection pokemons:
+```sh
+$ docker exec 6f4be171c24c mongoimport -d meliuz -c pokemons --type json --file /tmp/pokemon.json --jsonArray -u root -p example --authenticationDatabase admin
+```
+PS: Substituir root e example pelo usuário e senha respectivamente.
+
+### Importando o arquivo pokemons.json sem utilizar o docker
+
+Se você não estiver utilizando o docker, basta executar o comando abaixo (localhost):
+
+```sh
+$  mongoimport -d meliuz -c pokemons --type json --file /tmp/pokemon.json --jsonArray -u root -p example --authenticationDatabase admin
+```
+PS: Substituir root e example pelo usuário e senha respectivamente.
 
 ## Executando testes
 

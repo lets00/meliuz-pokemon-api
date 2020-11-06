@@ -100,9 +100,40 @@ Inicialmente, é necessário ter instalado o **jest** no seu ambiente. Para inst
 $ npm i jest
 ```
 
+Configurar a variável de ambiente localmente para acessar o banco de dados:
+```sh
+export DB_URL=mongodb://root:example@localhost:27017/meliuz?authSource=admin
+```
+PS: substituir root e example pelo seu usuário e senha, respectivamente.
+
 Para executar **todas** as suítes de testes, execute o seguinte comando:
 ```sh
 $ npm run test
+```
+### Executanto testes de cobertura
+
+Para executar os testes de cobertura execute:
+```sh
+$ npm run test:coverage
+...
+--------------------------------|---------|----------|---------|---------|-------------------
+File                            | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+--------------------------------|---------|----------|---------|---------|-------------------
+All files                       |   94.85 |    84.21 |     100 |   92.42 |                   
+ meliuz-pokemon-api             |   95.65 |      100 |     100 |   93.75 |                   
+  app.js                        |   95.65 |      100 |     100 |   93.75 | 16                
+ meliuz-pokemon-api/controllers |   85.19 |       75 |     100 |   80.95 |                   
+  pokemonController.js          |   86.67 |       75 |     100 |   83.33 | 10,17             
+  teamController.js             |   83.33 |       75 |     100 |   77.78 | 9-10              
+ meliuz-pokemon-api/models      |     100 |       75 |     100 |     100 |                   
+  pokemonModel.js               |     100 |       75 |     100 |     100 | 1                 
+  teamModel.js                  |     100 |       75 |     100 |     100 | 1                 
+ meliuz-pokemon-api/routes      |     100 |      100 |     100 |     100 |                   
+  pokemon.js                    |     100 |      100 |     100 |     100 |                   
+  team.js                       |     100 |      100 |     100 |     100 |                   
+ meliuz-pokemon-api/validators  |     100 |    83.33 |     100 |     100 |                   
+  teamValidator.js              |     100 |    83.33 |     100 |     100 | 1                 
+--------------------------------|---------|----------|---------|---------|-------------------
 ```
 
 # Rotas

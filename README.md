@@ -23,6 +23,7 @@ PS: não esqueça de definir as credenciais fortes.
 O container do node pode ser configurado criando um arquivo `app.env` e definindo as seguintes informações:
 ```sh
 DB_URL=mongodb://root:example@db:27017/meliuz?authSource=admin
+PORT=3000
 ```
 PS: substituir root e example pelo seu usuário e senha, respectivamente.
 
@@ -50,6 +51,7 @@ $ npm i
 Após isso, é necessário configurar uma váriável de ambiente com a URI de acesso ao banco de dados:
 ```sh
 $ export DB_URL=mongodb://root:example@localhost:27017/meliuz?authSource=admin
+$ export PORT=3000
 ```
 Para executar o servidor, execute o comando:
 ```sh
@@ -105,6 +107,7 @@ $ npm i jest
 Configurar a variável de ambiente localmente para acessar o banco de dados:
 ```sh
 export DB_URL=mongodb://root:example@localhost:27017/meliuz?authSource=admin
+export PORT=3000
 ```
 PS: substituir root e example pelo seu usuário e senha, respectivamente.
 

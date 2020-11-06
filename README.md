@@ -4,6 +4,8 @@ Essa API foi construída como parte do desafio técnico proposto pela Meliuz par
 
 O desafio consiste em construir uma API para uma pequena interface que possibilitará que usuários visualizem uma lista com todos os Pokémon existentes e faça filtros por nome e tipo. Além de permitir a criação e gravação de um time montado pelo usuário. Para mais informações sobre o desafio, entre em contato direto com o time da Meliuz.
 
+A versão de produção pode ser acessada através do endereço: [https://meliuz-pokemon-api.herokuapp.com](https://meliuz-pokemon-api.herokuapp.com)
+
 # Instalação
 
 ## Usando containers docker
